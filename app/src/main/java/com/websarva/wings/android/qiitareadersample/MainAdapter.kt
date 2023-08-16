@@ -25,6 +25,8 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val article: Article = articles[position]
         holder.binding.articleTitle.text = article.title
+        holder.binding.articleDate.text = article.date
+        holder.binding.articleUserName.text = article.user.id
     }
 
     override fun getItemCount(): Int {

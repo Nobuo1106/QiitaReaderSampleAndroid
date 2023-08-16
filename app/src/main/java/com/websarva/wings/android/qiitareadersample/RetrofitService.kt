@@ -1,7 +1,6 @@
 package com.websarva.wings.android.qiitareadersample
 
 import com.websarva.wings.android.qiitareadersample.model.Article
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.http.GET
 import retrofit2.Call
