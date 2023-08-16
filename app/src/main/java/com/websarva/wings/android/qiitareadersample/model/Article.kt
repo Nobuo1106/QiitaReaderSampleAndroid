@@ -1,4 +1,4 @@
-package com.websarva.wings.android.qiitareadersample
+package com.websarva.wings.android.qiitareadersample.model
 
 data class Article(
     var title: String,
