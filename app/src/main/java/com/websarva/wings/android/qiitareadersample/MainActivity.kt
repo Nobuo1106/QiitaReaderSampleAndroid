@@ -11,15 +11,15 @@ import com.websarva.wings.android.qiitareadersample.repository.ArticleRepository
 import com.websarva.wings.android.qiitareadersample.viewModel.ArticleViewModel
 import com.websarva.wings.android.qiitareadersample.viewModel.ArticleViewModelFactory
 
+private const val TAG = "RecentCallsActivity"
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var viewModel: ArticleViewModel
+    private lateinit var viewModel: ArticleViewModel
 
     private val retrofitService = RetrofitService.getInstance()
-    val adapter = MainAdapter()
+    private val adapter = MainAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +32,14 @@ class MainActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
-        //get viewmodel instance using MyViewModelFactory
+        //get viewModel instance using MyViewModelFactory
         viewModel =
             ViewModelProvider(this, ArticleViewModelFactory(ArticleRepository(retrofitService))).get(
                 ArticleViewModel::class.java
             )
 
         viewModel.articleList.observe(this, Observer {
-            Log.d(TAG, "movieList: $it")
+            Log.d(TAG, "articleList: $it")
             adapter.setArticleList(it)
         })
 

@@ -8,7 +8,7 @@ import com.websarva.wings.android.qiitareadersample.model.Article
 
 class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
-    var articles = mutableListOf<Article>()
+    private var articles = mutableListOf<Article>()
 
     fun setArticleList(articles: List<Article>) {
         this.articles = articles.toMutableList()
@@ -32,4 +32,4 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 }
 
-class MainViewHolder(val binding: LayoutRvItemBinding) : RecyclerView.ViewHolder(binding.root) {}
+class MainViewHolder(val binding: LayoutRvItemBinding) : RecyclerView.ViewHolder(binding.root)
