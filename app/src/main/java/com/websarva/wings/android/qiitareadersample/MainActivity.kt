@@ -2,55 +2,11 @@ package com.websarva.wings.android.qiitareadersample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.websarva.wings.android.qiitareadersample.databinding.ActivityMainBinding
-import com.websarva.wings.android.qiitareadersample.repository.ArticleRepository
-import com.websarva.wings.android.qiitareadersample.viewModel.ArticleViewModel
-import com.websarva.wings.android.qiitareadersample.viewModel.ArticleViewModelFactory
 
-private const val TAG = "RecentCallsActivity"
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
-    private lateinit var viewModel: ArticleViewModel
-
-    private val retrofitService = RetrofitService.getInstance()
-    private val adapter = MainAdapter()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).apply {
-            //set recyclerview adapter
-            recyclerview.adapter = adapter
-
-            //set layout manager for recyclerview
-            recyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
-            val dividerItemDecoration = DividerItemDecoration(recyclerview.context, LinearLayoutManager.VERTICAL)
-            // アイテム毎の区切り線を使い方
-            recyclerview.addItemDecoration(dividerItemDecoration)
-        }
-        setContentView(binding.root)
-
-        //get viewModel instance using MyViewModelFactory
-        viewModel =
-            ViewModelProvider(this, ArticleViewModelFactory(ArticleRepository(retrofitService))).get(
-                ArticleViewModel::class.java
-            )
-
-        viewModel.articleList.observe(this, Observer {
-            Log.d(TAG, "articleList: $it")
-            adapter.setArticleList(it)
-        })
-
-        viewModel.errorMessage.observe(this, Observer {
-            Log.d(TAG, "errorMessage: $it")
-        })
-
-        viewModel.getAllArticles()
+        setContentView(R.layout.activity_main)
     }
 }

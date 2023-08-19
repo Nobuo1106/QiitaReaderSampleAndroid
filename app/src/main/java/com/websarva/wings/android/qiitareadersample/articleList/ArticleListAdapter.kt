@@ -1,4 +1,4 @@
-package com.websarva.wings.android.qiitareadersample
+package com.websarva.wings.android.qiitareadersample.articleList
 
 import DateUtils
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.websarva.wings.android.qiitareadersample.databinding.LayoutRvItemBinding
 import com.websarva.wings.android.qiitareadersample.model.Article
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class ArticleListAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     private var articles = mutableListOf<Article>()
 
@@ -24,6 +24,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
         return MainViewHolder(binding)
     }
 
+    // ビューにバインディング
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val article: Article = articles[position]
         holder.binding.articleTitle.text = article.title

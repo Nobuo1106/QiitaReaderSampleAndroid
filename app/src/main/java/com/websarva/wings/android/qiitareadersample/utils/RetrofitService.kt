@@ -1,4 +1,4 @@
-package com.websarva.wings.android.qiitareadersample
+package com.websarva.wings.android.qiitareadersample.utils
 
 import com.websarva.wings.android.qiitareadersample.model.Article
 import okhttp3.OkHttpClient
