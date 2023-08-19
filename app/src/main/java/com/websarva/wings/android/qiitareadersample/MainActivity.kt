@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.websarva.wings.android.qiitareadersample.databinding.ActivityMainBinding
 import com.websarva.wings.android.qiitareadersample.repository.ArticleRepository
 import com.websarva.wings.android.qiitareadersample.viewModel.ArticleViewModel
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
             //set layout manager for recyclerview
             recyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
+            val dividerItemDecoration = DividerItemDecoration(recyclerview.context, LinearLayoutManager.VERTICAL)
+            // アイテム毎の区切り線を使い方
+            recyclerview.addItemDecoration(dividerItemDecoration)
         }
         setContentView(binding.root)
 
