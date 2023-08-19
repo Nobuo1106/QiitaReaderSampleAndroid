@@ -1,8 +1,10 @@
 package com.websarva.wings.android.qiitareadersample
 
+import DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.websarva.wings.android.qiitareadersample.databinding.LayoutRvItemBinding
 import com.websarva.wings.android.qiitareadersample.model.Article
 
@@ -25,8 +27,11 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val article: Article = articles[position]
         holder.binding.articleTitle.text = article.title
-        holder.binding.articleDate.text = article.date
+        holder.binding.articleDate.text = DateUtils.formatDate(article.date)
         holder.binding.articleUserName.text = article.user.id
+        Glide.with(holder.binding.root.context)
+            .load(article.user.imgUrl)
+            .into(holder.binding.articleImage)
     }
 
     override fun getItemCount(): Int {

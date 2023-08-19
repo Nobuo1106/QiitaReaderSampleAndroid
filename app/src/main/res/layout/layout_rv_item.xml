@@ -2,18 +2,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     android:padding="10dp">
 
     <TextView
         android:id="@+id/article_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/article_image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/image_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/article_title" />
 
     <TextView
         android:id="@+id/article_user_name"
@@ -21,8 +31,10 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_title" />
+        android:paddingLeft="10dp"
+        app:layout_constraintStart_toEndOf="@+id/article_image"
+        app:layout_constraintTop_toBottomOf="@+id/article_title"
+        app:layout_constraintBottom_toBottomOf="@+id/article_image" />
 
     <TextView
         android:id="@+id/article_date"
@@ -30,7 +42,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
+        android:paddingLeft="10dp"
         app:layout_constraintStart_toEndOf="@+id/article_user_name"
         app:layout_constraintTop_toBottomOf="@+id/article_title" />
 
