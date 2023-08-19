@@ -20,7 +20,7 @@ class ArticleListFragment : Fragment() {
     private lateinit var binding: FragmentArticleListBinding
 
     private lateinit var viewModel: ArticleViewModel
-    
+
     private val retrofitService = RetrofitService.getInstance()
     private val adapter = ArticleListAdapter()
 

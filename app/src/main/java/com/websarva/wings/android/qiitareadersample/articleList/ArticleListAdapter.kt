@@ -1,10 +1,12 @@
 package com.websarva.wings.android.qiitareadersample.articleList
 
 import DateUtils
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.websarva.wings.android.qiitareadersample.WebViewActivity
 import com.websarva.wings.android.qiitareadersample.databinding.LayoutRvItemBinding
 import com.websarva.wings.android.qiitareadersample.model.Article
 
@@ -33,6 +35,11 @@ class ArticleListAdapter : RecyclerView.Adapter<MainViewHolder>() {
         Glide.with(holder.binding.root.context)
             .load(article.user.imgUrl)
             .into(holder.binding.articleImage)
+        holder.binding.root.setOnClickListener {
+            val intent = Intent(holder.binding.root.context, WebViewActivity::class.java)
+            intent.putExtra("url", article.url)
+            holder.binding.root.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
