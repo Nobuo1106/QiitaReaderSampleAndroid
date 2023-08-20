@@ -15,8 +15,14 @@ class ArticleListAdapter : RecyclerView.Adapter<MainViewHolder>() {
     private var articles = mutableListOf<Article>()
 
     fun setArticleList(articles: List<Article>) {
-        this.articles = articles.toMutableList()
-        notifyDataSetChanged()
+        // 更新前の記事数がスタートインデックス
+        val startPosition = this.articles.size
+        // 取得した記事を追加
+        this.articles.addAll(articles)
+        // 追加分を合わせた記事数
+        val itemCount = articles.size
+        // 追加前~追加後までのrecyclerViewを更新
+        notifyItemRangeInserted(startPosition, itemCount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
