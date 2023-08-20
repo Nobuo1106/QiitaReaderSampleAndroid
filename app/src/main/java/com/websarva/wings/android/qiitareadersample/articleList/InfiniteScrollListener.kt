@@ -11,6 +11,7 @@ abstract class InfiniteScrollListener(
         super.onScrolled(recyclerView, dx, dy)
         val totalItemCount = layoutManager.itemCount
         val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+        // 表示するアイテムが足りなくなった際に追加で取得する
         if (totalItemCount <= (lastVisibleItem + visibleThreshold)) {
             loadMoreItems()
         }

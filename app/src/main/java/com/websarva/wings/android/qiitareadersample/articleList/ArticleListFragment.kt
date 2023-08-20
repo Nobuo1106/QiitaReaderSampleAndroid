@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -57,8 +58,10 @@ class ArticleListFragment : Fragment() {
             adapter.setArticleList(it)
         })
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-            // handle error
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { error ->
+            error?.let {
+                Toast.makeText(context, "通信に失敗しました。通信環境が良いところで再度アクセスして下さい。", Toast.LENGTH_LONG).show()
+            }
         })
 
         // 記事をAPIから取得
