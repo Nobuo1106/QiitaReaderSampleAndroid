@@ -1,5 +1,6 @@
 package com.websarva.wings.android.qiitareadersample.articleList
 
+import InfiniteScrollListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,14 @@ class ArticleListFragment : Fragment() {
             val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             // アイテム毎の区切り線を設定
             recyclerview.addItemDecoration(dividerItemDecoration)
+
+            // イベントリスナーを設定
+            val infiniteScrollListener = object : InfiniteScrollListener(recyclerview.layoutManager as LinearLayoutManager) {
+                override fun loadMoreItems() {
+                    viewModel.getArticles()
+                }
+            }
+            recyclerview.addOnScrollListener(infiniteScrollListener)
         }
 
         // ビューモデルにリポジトリを注入
@@ -53,7 +62,7 @@ class ArticleListFragment : Fragment() {
         })
 
         // 記事をAPIから取得
-        viewModel.getAllArticles()
+        viewModel.getArticles()
 
         return binding.root
     }
